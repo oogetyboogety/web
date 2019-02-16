@@ -670,7 +670,7 @@ STABLE_COINS = ['DAI', 'USDT', 'TUSD']
 ENABLE_SILK = env.bool('ENABLE_SILK', default=False)
 if ENABLE_SILK:
     INSTALLED_APPS += ['silk']
-    MIDDLEWARE.append('silk.middleware.SilkyMiddleware')
+    MIDDLEWARE.insert(0, 'silk.middleware.SilkyMiddleware')
     SILKY_PYTHON_PROFILER = env.bool('SILKY_PYTHON_PROFILER', default=True)
     SILKY_PYTHON_PROFILER_BINARY = env.bool('SILKY_PYTHON_PROFILER_BINARY', default=False)
     SILKY_AUTHENTICATION = env.bool('SILKY_AUTHENTICATION', default=False)

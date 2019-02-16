@@ -16,6 +16,21 @@ services:
         reservations:
           memory: 128M
 
+  pghero:
+    image: ankane/pghero
+    restart: unless-stopped
+    ports:
+      - "3001:3001"  
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - PORT=3001
+    deploy:
+     resources:
+       limits:
+         memory: 1024M
+       reservations:
+         memory: 128M
+
   ipfs:
     image: ipfs/go-ipfs:release
     restart: unless-stopped

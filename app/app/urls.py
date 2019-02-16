@@ -461,11 +461,11 @@ urlpatterns = [
     # wagtail
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^silk/', include('silk.urls', namespace='silk')),
     re_path(r'', include(wagtail_urls))
 ]
 
-if settings.ENABLE_SILK:
-    urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
+urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
 
 if not settings.AWS_STORAGE_BUCKET_NAME:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
